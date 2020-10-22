@@ -13,5 +13,16 @@ composer require isadmincn/multi-app
 
 ## 使用
 
-用法参考ThinkPHP6完全开发手册[多应用模式](https://www.kancloud.cn/manual/thinkphp6_0/1297876)章节。
+项目安装该包之后，在```app/provider.php```添加如下
+```php
+<?php
 
+return [
+    'think\Http' => isadmin\hookcore\Http::class,
+    'think\Route' => isadmin\hookcore\Route::class,
+
+    // 其他依赖注入配置
+];
+```
+
+即使是单应用，在```config/app.php```中的```app_express```配置为```false```的情况，也可以使用该库来实现在中间件获取控制器等信息。
