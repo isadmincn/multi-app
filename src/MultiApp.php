@@ -241,6 +241,7 @@ class MultiApp
             $this->app->middleware->import(include $appPath . 'middleware.php', 'app');
         }
 
+        $this->app->bind(include __DIR__ . '/provider.php');
         if (is_file($appPath . 'provider.php')) {
             $this->app->bind(include $appPath . 'provider.php');
         }
