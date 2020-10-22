@@ -226,10 +226,6 @@ class MultiApp
             $this->app->loadEvent(include $appPath . 'event.php');
         }
 
-        if (is_file($appPath . 'middleware.php')) {
-            $this->app->middleware->import(include $appPath . 'middleware.php', 'app');
-        }
-
         $this->app->bind(include __DIR__ . '/provider.php');
         if (is_file($appPath . 'provider.php')) {
             $this->app->bind(include $appPath . 'provider.php');
@@ -239,4 +235,18 @@ class MultiApp
         $this->app->loadLangPack($this->app->lang->defaultLangSet());
     }
 
+    /**
+     * 多应用是加载应用中间件
+     *
+     * @return void
+     */
+    public function addAppMiddlewares()
+    {
+        if ($this->is_multi_app) {
+            $appPath = $this->app->getAppPath();
+            if (is_file($appPath . 'middleware.php')) {
+                $this->app->middleware->import(include $appPath . 'middleware.php', 'app');
+            }
+        }
+    }
 }

@@ -20,10 +20,18 @@ class Service extends BaseService
     {
         $this->app->event->listen('HttpRun', function () {
             $app = new MultiApp($this->app);
+
+            // 加载多应用处理中间件
             $this->app->middleware->add(HandleMultiApp::class);
+
             // 如果是多应用请求，则把LoadRoute加入到应用中间件列表
             // 如果是单应用请求，则把LoadRoute加入到全局中间件列表
             $this->app->middleware->add(LoadRoute::class, $app->is_multi_app() ? 'app' : 'global');
+
+            // 多应用时，加载应用中间件
+            if ($app->is_multi_app()) {
+                $app->addAppMiddlewares();
+            }
         });
 
         $this->commands([
