@@ -11,13 +11,19 @@
 namespace isadmin;
 
 use think\Service as BaseService;
+use isadmin\middleware\HandleMultiApp;
+use isadmin\middleware\LoadRoute;
 
 class Service extends BaseService
 {
     public function boot()
     {
         $this->app->event->listen('HttpRun', function () {
-            $this->app->middleware->add(MultiApp::class);
+            $app = new MultiApp($this->app);
+            $this->app->middleware->add(HandleMultiApp::class);
+            // 如果是多应用请求，则把LoadRoute加入到应用中间件列表
+            // 如果是单应用请求，则把LoadRoute加入到全局中间件列表
+            $this->app->middleware->add(LoadRoute::class, $app->is_multi_app() ? 'app' : 'global');
         });
 
         $this->commands([

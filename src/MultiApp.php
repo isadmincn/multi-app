@@ -18,14 +18,11 @@ use think\exception\HttpException;
 use think\Request;
 use think\Response;
 
-use isadmin\middleware\LoadRoute;
-
 /**
  * 多应用模式支持
  */
 class MultiApp
 {
-
     /** @var App */
     protected $app;
 
@@ -47,36 +44,28 @@ class MultiApp
      */
     protected $path;
 
+    /**
+     * 是否是多应用请求
+     * @var boolean
+     */
+    protected $is_multi_app;
+
     public function __construct(App $app)
     {
         $this->app  = $app;
         $this->name = $this->app->http->getName();
         $this->path = $this->app->http->getPath();
+        $this->app->request->is_multi_app = $this->is_multi_app = $this->parseMultiApp();
     }
 
     /**
-     * 多应用解析
-     * @access public
-     * @param Request $request
-     * @param Closure $next
-     * @return Response
+     * 是否是多应用请求
+     *
+     * @return boolean
      */
-    public function handle($request, Closure $next)
+    public function is_multi_app()
     {
-        $request->is_multi_app = $this->parseMultiApp();
-        if (!$request->is_multi_app) {
-            // 单应用请求模式，LoadRoute中间件加入到全局中间件
-            $this->app->middleware->add(LoadRoute::class);
-            return $next($request);
-        }
-
-        // 多应用请求模式，LoadRoute中间件加入到应用中间件
-        $this->app->middleware->add(LoadRoute::class, 'app');
-        return $this->app->middleware->pipeline('app')
-            ->send($request)
-            ->then(function ($request) use ($next) {
-                return $next($request);
-            });
+        return $this->is_multi_app;
     }
 
     /**
