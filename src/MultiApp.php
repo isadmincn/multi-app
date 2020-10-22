@@ -15,8 +15,6 @@ namespace isadmin;
 use Closure;
 use think\App;
 use think\exception\HttpException;
-use think\Request;
-use think\Response;
 
 /**
  * 多应用模式支持
@@ -48,14 +46,14 @@ class MultiApp
      * 是否是多应用请求
      * @var boolean
      */
-    protected $is_multi_app;
+    protected $isMultiApp;
 
     public function __construct(App $app)
     {
         $this->app  = $app;
         $this->name = $this->app->http->getName();
         $this->path = $this->app->http->getPath();
-        $this->app->request->is_multi_app = $this->is_multi_app = $this->parseMultiApp();
+        $this->app->request->isMultiApp = $this->isMultiApp = $this->parseMultiApp();
     }
 
     /**
@@ -63,9 +61,9 @@ class MultiApp
      *
      * @return boolean
      */
-    public function is_multi_app()
+    public function isMultiApp()
     {
-        return $this->is_multi_app;
+        return $this->isMultiApp;
     }
 
     /**
@@ -241,7 +239,7 @@ class MultiApp
      */
     public function addAppMiddlewares()
     {
-        if ($this->is_multi_app) {
+        if ($this->isMultiApp) {
             $appPath = $this->app->getAppPath();
             if (is_file($appPath . 'middleware.php')) {
                 $this->app->middleware->import(include $appPath . 'middleware.php', 'app');

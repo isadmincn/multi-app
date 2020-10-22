@@ -18,7 +18,7 @@ class Http extends \think\Http
         $this->app->event->trigger(HttpRun::class);
 
         // 加载到全局路由，适用于单应用
-        if (empty($request->is_multi_app)) {
+        if (empty($request->isMultiApp)) {
             $this->app->middleware->add(LoadRoute::class);
         }
         

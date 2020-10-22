@@ -26,7 +26,7 @@ class HandleMultiApp
      */
     public function handle(Request $request, Closure $next)
     {
-        if (!$request->is_multi_app) {
+        if (!$request->isMultiApp) {
             return $next($request);
         }
 

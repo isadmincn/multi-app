@@ -12,8 +12,6 @@ declare (strict_types = 1);
 
 namespace isadmin;
 
-use think\App;
-use think\Route;
 use think\route\Url as UrlBuild;
 
 /**

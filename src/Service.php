@@ -28,10 +28,10 @@ class Service extends BaseService
             // 如果是单应用请求，则把LoadRoute加入到全局中间件列表
             // 系统执行全局中间件到HandleMultiApp中间件时，如果是多应用场景，则会将pipeline切换到应用中间件
             // 等应用中间件执行完毕之后，会再切入到HandleMultiApp之后的全局中间件
-            $this->app->middleware->add(LoadRoute::class, $app->is_multi_app() ? 'app' : 'global');
+            $this->app->middleware->add(LoadRoute::class, $app->isMultiApp() ? 'app' : 'global');
 
             // 多应用时，加载应用中间件
-            if ($app->is_multi_app()) {
+            if ($app->isMultiApp()) {
                 $app->addAppMiddlewares();
             }
         });
