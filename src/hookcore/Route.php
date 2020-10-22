@@ -11,7 +11,7 @@ class Route extends \think\Route
      * @param Closure|bool $withRoute
      * @return void
      */
-    public function dispatch(Request $request, $withRoute = true)
+    public function dispatch(Request $request, $withRoute = false)
     {
         $this->request = $request;
         $this->host    = $this->request->host(true);
