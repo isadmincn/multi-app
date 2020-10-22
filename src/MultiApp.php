@@ -226,7 +226,6 @@ class MultiApp
             $this->app->loadEvent(include $appPath . 'event.php');
         }
 
-        $this->app->bind(include __DIR__ . '/provider.php');
         if (is_file($appPath . 'provider.php')) {
             $this->app->bind(include $appPath . 'provider.php');
         }
