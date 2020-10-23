@@ -8,7 +8,7 @@
 
 ## 安装
 ~~~
-composer require isadmincn/multi-app
+composer require isadmin/multi-app
 ~~~
 
 ## 使用
