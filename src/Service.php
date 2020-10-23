@@ -8,11 +8,11 @@
 // +----------------------------------------------------------------------
 // | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
-namespace isadmin;
+namespace isadmin\multiapp;
 
 use think\Service as BaseService;
-use isadmin\middleware\HandleMultiApp;
-use isadmin\middleware\LoadRoute;
+use isadmin\multiapp\middleware\HandleMultiApp;
+use isadmin\multiapp\middleware\LoadRoute;
 
 class Service extends BaseService
 {

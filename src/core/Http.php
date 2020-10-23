@@ -1,8 +1,8 @@
 <?php
-namespace isadmin\hookcore;
+namespace isadmin\multiapp\core;
 
 use think\Request;
-use isadmin\middleware\LoadRoute;
+use isadmin\multiapp\middleware\LoadRoute;
 use think\event\HttpRun;
 
 class Http extends \think\Http

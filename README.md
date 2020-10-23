@@ -18,8 +18,8 @@ composer require isadmin/multi-app
 <?php
 
 return [
-    'think\Http' => isadmin\hookcore\Http::class,
-    'think\Route' => isadmin\hookcore\Route::class,
+    'think\Http' => isadmin\multiapp\core\Http::class,
+    'think\Route' => isadmin\multiapp\core\Route::class,
 
     // 其他依赖注入配置
 ];

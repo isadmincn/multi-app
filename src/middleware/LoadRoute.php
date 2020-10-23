@@ -1,5 +1,5 @@
 <?php
-namespace isadmin\middleware;
+namespace isadmin\multiapp\middleware;
 
 use think\event\RouteLoaded;
 

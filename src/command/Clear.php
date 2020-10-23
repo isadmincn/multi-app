@@ -8,7 +8,7 @@
 // +----------------------------------------------------------------------
 // | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
-namespace isadmin\command;
+namespace isadmin\multiapp\command;
 
 use think\console\Command;
 use think\console\Input;

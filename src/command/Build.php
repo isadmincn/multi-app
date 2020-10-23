@@ -9,7 +9,7 @@
 // | Author: yunwuxin <448901948@qq.com>
 // +----------------------------------------------------------------------
 
-namespace isadmin\command;
+namespace isadmin\multiapp\command;
 
 use think\console\Command;
 use think\console\Input;

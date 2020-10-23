@@ -4,7 +4,7 @@
     "license": "Apache-2.0",
     "authors": [
         {
-            "name": "isadmincn",
+            "name": "isadmin",
             "email": "dev@isadmin.cn"
         }
     ],
@@ -14,13 +14,13 @@
     },
     "autoload": {
         "psr-4": {
-            "isadmin\\": "src"
+            "isadmin\\multiapp\\": "src"
         }
     },
     "extra": {
         "think":{
             "services":[
-                "isadmin\\Service"
+                "isadmin\\multiapp\\Service"
             ]
         }
     }

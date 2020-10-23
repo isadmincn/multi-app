@@ -1,5 +1,5 @@
 <?php
-namespace isadmin\hookcore;
+namespace isadmin\multiapp\core;
 
 use think\Request;
 
