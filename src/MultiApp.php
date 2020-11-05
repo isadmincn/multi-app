@@ -73,7 +73,11 @@ class MultiApp
      */
     protected function getRoutePath(): string
     {
-        return $this->app->getAppPath() . 'route' . DIRECTORY_SEPARATOR;
+        if (is_dir($this->app->getAppPath() . 'route')) {
+            return $this->app->getAppPath() . 'route' . DIRECTORY_SEPARATOR;
+        }
+
+        return $this->app->getRootPath() . 'route' . DIRECTORY_SEPARATOR . $this->appName . DIRECTORY_SEPARATOR;
     }
 
     /**
